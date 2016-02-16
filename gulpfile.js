@@ -15,15 +15,15 @@ gulp.task('default', ['js', 'watch'], function() {
 		});
 
 	supervisorChild.stdout.on('data', function(data) {
-		console.log('supervisor stdout: ' + data);
+		process.stdout.write('supervisor stdout: ' + data);
 	});
 
 	supervisorChild.stderr.on('data', function(data) {
-		console.log('supervisor stderr: ' + data);
+		process.stdout.write('supervisor stderr: ' + data);
 	});
 
 	supervisorChild.on('close', function(code) {
-		console.log('supervisor closing code: ' + code);
+		process.stdout.write('supervisor closing code: ' + code);
 	});
 
 });
