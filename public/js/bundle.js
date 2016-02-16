@@ -9,7 +9,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _tmp2.default)();
 
-console.log('1234567');
+console.log('asdflskjfdsl');
 
 console.log('jsx here');
 

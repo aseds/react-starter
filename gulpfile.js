@@ -6,17 +6,26 @@ var gulp = require('gulp'),
 
 const exec = require('child_process').exec;
 
-
 gulp.task('default', ['js', 'watch'], function() {
-	const child = exec('supervisor -e "js,jade,styl" server.js',
-	  (error, stdout, stderr) => {
-	    console.log(`stdout: ${stdout}`);
-	    console.log(`stderr: ${stderr}`);
-	    if (error !== null) {
-	      console.log(`exec error: ${error}`);
-	    }
+	const supervisorChild = exec('supervisor -e "js,jade,styl" server.js',
+		(error, stdout, stderr) => {
+			 if (error !== null) {
+	      		console.log(`exec error: ${error}`);
+	    	}
+		});
+
+	supervisorChild.stdout.on('data', function(data) {
+		console.log('supervisor stdout: ' + data);
 	});
-	
+
+	supervisorChild.stderr.on('data', function(data) {
+		console.log('supervisor stderr: ' + data);
+	});
+
+	supervisorChild.on('close', function(code) {
+		console.log('supervisor closing code: ' + code);
+	});
+
 });
 
 // browserify ./client/app.jsx -o ./public/js/app.js -t [ babelify --presets [es2015 react] ]
