@@ -1,0 +1,33 @@
+{
+  "name": "experimental",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify ./client/app.jsx -o ./public/js/app.js -t [ babelify --presets [es2015 react] ]",
+    "start": "gulp; npm watch",
+    "watch": "gulp; supervisor -e \"js,jade,styl\" server.js ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "react": "^0.14.7",
+    "socket.io": "^1.4.5",
+    "socket.io-client": "^1.4.5"
+  },
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "nodemon": "^1.8.1",
+    "reload": "^0.7.0",
+    "restart": "0.0.4",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
